@@ -1,2 +1,7 @@
-console.log(1 < 2 < 3);     // true => [true < 3] => 1 < 3
-console.log(3 < 2 < 1);     // true => [false < 1] => 0 < 1
+function greet(name) {
+    name = name || '<Your name here>';
+    console.log('Hello ' + name);
+}
+
+greet('Tony');
+greet();
