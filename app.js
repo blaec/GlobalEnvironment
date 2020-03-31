@@ -1,5 +1,2 @@
-var a = 2, b = 3, c = 4;
-a = b = c;
-console.log(a);
-console.log(b);
-console.log(c);
+console.log(1 < 2 < 3);     // true => [true < 3] => 1 < 3
+console.log(3 < 2 < 1);     // true => [false < 1] => 0 < 1
