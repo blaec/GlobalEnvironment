@@ -1,33 +1,39 @@
-// by value (primitives)
-var a = 3;
-var b;
+console.log(this);      // global window
 
-b = a;
-a =2;
-
-console.log(a);
-console.log(b);
-
-// by reference (all objects (including functions))
-var c = {greeting: 'hi'};
-var d;
-
-d = c;
-c.greeting = 'hello';
-
-console.log(c);
-console.log(d); // mutate
-
-// by reference (even as parameters)
-function changeGreeting(obj) {
-    obj.greeting = 'Hola';      // mutate
+function a() {
+    console.log(this);  // global window
+    this.newvariable = 'hello';
 }
 
-changeGreeting(d);
-console.log(c);
-console.log(d);
+function b() {
+    console.log(this);  // global window
+}
 
-// equals operator sets up new memory space (new address)
-c = {greeting: 'howdy'};
-console.log(c);
-console.log(d);
+a();
+
+console.log(newvariable);
+
+b();
+
+var c = {
+    name: 'The c object',
+    log: function () {
+        var self = this;
+
+        // this.name = 'Updated c object';
+        self.name = 'Updated c object';
+        // console.log(this);
+        console.log(self);
+
+        var setname = function (newname) {
+            // this.name = newname;
+            self.name = newname;
+            // console.log(this);
+        };
+        setname('Updated again! The c object');
+        // console.log(this);
+        console.log(self);
+    }
+};
+
+c.log();
