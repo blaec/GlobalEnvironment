@@ -1,25 +1,26 @@
-function sayHiLater() {
-    var greeting = 'Hi!';
+var person = {
+    firstname: 'John',
+    lastname: 'Doe',
+    getFullName: function () {
+        var fullName = this.firstname + ' ' + this.lastname;
+        return fullName;
+    }
+};
 
-    setTimeout(function () {
-        console.log(greeting)
-    }, 3000);
-}
+var logName = function (lang1, lang2) {
+    console.log('Logged: ' + this.getFullName());
+    console.log('Arguments: ' + lang1 + ' ' + lang2);
+    console.log('---------------------------------');
+};
 
-sayHiLater();
+console.log('bind() sample');
+var logPersonName = logName.bind(person);
+logPersonName('en');
 
-// -- callback --
+console.log('call() sample');
+logName.call(person, 'en', 'es');
 
-function tellMeWhenDone(callback) {
-    var a = 1000;
-    var b = 1000;
+console.log('apply() sample');
+logName.apply(person, ['en', 'es']);
 
-    callback();     // the 'callback', it runs the function I give it!
-}
 
-tellMeWhenDone(function () {
-    console.log('I am done!')
-});
-tellMeWhenDone(function () {
-    console.log('All done...')
-});
