@@ -1,6 +1,10 @@
-var firstname = 'John';
+function greet(whattosay) {
+    return function (name) {
+        console.log(whattosay + ' ' + name);
+    };
+}
 
-(function (name) {
-    var greeting = 'Inside IIFE: Hello';
-    console.log(greeting + ' ' + name);
-}(firstname));      // IIFE
+greet('Hi')('Tony');
+
+var sayHi = greet('Hi');
+sayHi('Tony');
