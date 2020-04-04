@@ -24,3 +24,23 @@ console.log('apply() sample');
 logName.apply(person, ['en', 'es']);
 
 
+// function borrowing
+var person2 = {
+    firstname: 'Jane',
+    lastname: 'Doe'
+};
+
+console.log(person.getFullName.apply(person2));
+
+// function curring
+function multiple(a, b) {
+    return a * b;
+}
+var multipleByTwo = multiple.bind(this, 2);
+// function multipleByTwo(b) {
+//     var a = 2;
+//     return a * b;
+// }
+var multipleByThree = multiple.bind(this, 3);
+console.log(multipleByTwo(4));
+console.log(multipleByThree(4));
