@@ -1,12 +1,26 @@
-Array.prototype.myCustomFeature = 'cool!';
-
-var arr = ['John', 'Jane', 'Jim'];
-
-for (var prop in arr) {
-    console.log(prop + ": " + arr[prop]);
+if (!Object.create) {
+    Object.create = function (o) {
+        if (arguments.length > 1) {
+            throw new Error('Object.create implementation only accepts the first parameter.');
+        }
+        function F() {}
+        F.prototype = o;
+        return new F();
+    };
 }
 
-console.log("-- Use this - it's safer to loop though all the elements");
-for (var i = 0; i <arr.length; i++) {
-    console.log(i + ": " + arr[i]);
-}
+var person = {
+    firstname: 'Default',
+    lastname: 'Default',
+    greet: function () {
+        return 'Hi ' + this.firstname;
+    }
+};
+
+var john = Object.create(person);
+console.log(john);
+
+// override prototype
+john.firstname = 'John';
+john.lastname = 'Doe';
+console.log(john);
