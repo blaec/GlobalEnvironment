@@ -1,20 +1,10 @@
-function Person(firstname, lastname) {
-    console.log(this);
-    this.firstname = firstname;
-    this.lastname = lastname;
-}
-
-Person.prototype.getFullName = function () {
-    return this.firstname + ' ' + this.lastname;
+String.prototype.isLengthGreaterThan = function (limit) {
+    return this.length > limit;
 };
+console.log('John'.isLengthGreaterThan(2));
 
-// if function invoked with 'new' word - this pointed to Person object
-var john = new Person('John', 'Doe');
-console.log(john);
-
-var jane = new Person('Jane', 'Doe');
-console.log(jane);
-
-Person.prototype.getFormalFullName = function () {
-    return this.lastname + ', ' + this.firstname;
+Number.prototype.isPositive = function () {
+    return this > 0;
 };
+var a = new Number(3);
+console.log(a.isPositive());
