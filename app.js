@@ -1,1 +1,2 @@
-var q = $('ul.people li');
+var g = G$('John', 'Doe');
+console.log(g);
